@@ -1,3 +1,5 @@
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:ecommerce_app/app/app_color.dart';
 import 'package:flutter/material.dart';
 import 'app_routes.dart';
@@ -19,6 +21,17 @@ class _CraftyBayState extends State<CraftyBay> {
         colorSchemeSeed: AppColors.themeColor,
         scaffoldBackgroundColor: Colors.white,
       ),
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      locale: Locale('bn'),
+      supportedLocales: [
+        Locale('en'),
+        Locale('bn'),
+      ],
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ecommerce_app/app/app_config.dart';
 import 'package:ecommerce_app/app/assets_path.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
               Spacer(),
               CircularProgressIndicator(),
               SizedBox(height: 16,),
-              Text('Version ${AppConfig.currentAppVersion}')
+              Text('${AppLocalizations.of(context)!.helloWorld} Version ${AppConfig.currentAppVersion}')
             ],
           ),
         ),
