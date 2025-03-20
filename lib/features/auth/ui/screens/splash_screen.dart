@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
               Spacer(),
               CircularProgressIndicator(),
               SizedBox(height: 16,),
-              Text('${AppLocalizations.of(context)!.helloWorld} Version ${AppConfig.currentAppVersion}')
+              Text('${AppLocalizations.of(context)!.version} ${AppConfig.currentAppVersion}')
             ],
           ),
         ),
