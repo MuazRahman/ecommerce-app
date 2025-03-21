@@ -41,7 +41,10 @@ class _SignInScreenState extends State<SignInScreen> {
             ),
             SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                throw Exception('My custom exceptions');
+
+              },
               child: Text(context.localization.signIn),
             ),
           ],
