@@ -59,7 +59,7 @@ class _CraftyBayState extends State<CraftyBay> {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      locale: Locale('bn'),
+      locale: Locale('en'),
       supportedLocales: [
         Locale('en'),
         Locale('bn'),
