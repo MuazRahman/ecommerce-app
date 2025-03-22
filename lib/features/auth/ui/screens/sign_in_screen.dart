@@ -15,71 +15,91 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
+  final TextEditingController _emailTEController = TextEditingController();
+  final TextEditingController _passwordTEController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = TextTheme.of(context);
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            const SizedBox(height: 60),
-            AppLogo(),
-            SizedBox(height: 24),
-            Text(context.localization.welcomeBack, style: textTheme.titleLarge),
-            SizedBox(height: 8),
-            Text(
-              context.localization.enterYourEmailAndPassword,
-              style: TextStyle(color: Colors.grey, fontSize: 16),
-            ),
-            SizedBox(height: 16),
-            TextFormField(
-              textInputAction: TextInputAction.next,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(hintText: context.localization.email),
-            ),
-            SizedBox(height: 8),
-            TextFormField(
-              textInputAction: TextInputAction.next,
-              obscureText: true,
-              decoration: InputDecoration(
-                hintText: context.localization.password,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              const SizedBox(height: 60),
+              AppLogo(),
+              SizedBox(height: 24),
+              Text(
+                context.localization.welcomeBack,
+                style: textTheme.titleLarge,
               ),
-            ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                throw Exception('My custom exceptions');
-
-              },
-              child: Text(context.localization.signIn),
-            ),
-            SizedBox(height: 24),
-            RichText(
-              text: TextSpan(
-                text: "Don't have an account? ",
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontWeight: FontWeight.w600,
+              SizedBox(height: 8),
+              Text(
+                context.localization.enterYourEmailAndPassword,
+                style: TextStyle(color: Colors.grey, fontSize: 16),
+              ),
+              SizedBox(height: 16),
+              TextFormField(
+                textInputAction: TextInputAction.next,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  hintText: context.localization.email,
                 ),
-                children: [
-                  TextSpan(
-                    text: 'Sign up',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.themeColor,
-                    ),
-                    recognizer: TapGestureRecognizer()..onTap = _onTapSignUpButton,
-                  ),
-                ],
+                controller: _emailTEController,
               ),
-            ),
-          ],
+              SizedBox(height: 8),
+              TextFormField(
+                textInputAction: TextInputAction.next,
+                obscureText: true,
+                decoration: InputDecoration(
+                  hintText: context.localization.password,
+                ),
+                controller: _passwordTEController,
+              ),
+              SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: () {
+                  throw Exception('My custom exceptions');
+                },
+                child: Text(context.localization.signIn),
+              ),
+              SizedBox(height: 24),
+              RichText(
+                text: TextSpan(
+                  text: "Don't have an account? ",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: 'Sign up',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.themeColor,
+                      ),
+                      recognizer:
+                          TapGestureRecognizer()..onTap = _onTapSignUpButton,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
+
   void _onTapSignUpButton() {
     Navigator.pushNamed(context, SignUpScreen.name);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _emailTEController.dispose();
+    _passwordTEController.dispose();
   }
 }
