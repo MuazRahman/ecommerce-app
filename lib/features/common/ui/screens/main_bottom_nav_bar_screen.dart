@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/features/catagories/ui/screens/category_list_screen.dart';
 import 'package:ecommerce_app/features/home/ui/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
   int _selectedIndex = 0;
   final List<Widget> _screens = [
     HomeScreen(),
-    HomeScreen(),
+    CategoryListScreen(),
     HomeScreen(),
     HomeScreen(),
   ];

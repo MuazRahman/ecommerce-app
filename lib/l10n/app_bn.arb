@@ -4,5 +4,20 @@
   "enterYourEmailAndPassword" : "আপনার ইমেইল এবং পাসওয়ার্ড দিন",
   "email" : "ইমেইল",
   "password" : "পাসওয়ার্ড",
-  "signIn" : "সাইন ইন"
+  "signIn" : "সাইন ইন",
+  "registerYourAccount" : "একাউন্ট রেজিষ্টার করুন",
+  "getStartedWithYourDetails" : "আপনার বিবরণ দিয়ে শুরু করুন",
+  "firstName" : "নামের প্রথম",
+  "lastName" : "নামের শেষ",
+  "phone" : "ফোন নাম্বার",
+  "deliveryAddress" : "ডেলিভারির ঠিকানা",
+  "signUp" : "সাইন আপ",
+  "enterYourOtpCode" : "ওটিপি কোড দিন",
+  "aFourDigitCodeHasBeenSent" : "আপনার ইমেইলে ৪ সংখ্যার একটি ওটিপি পাঠানো হয়েছে।",
+  "verify" : "নিশ্চিত করুন",
+  "categories" : "ক্যাটাগরি",
+  "seeAll" : "সবগুলো দেখুন",
+  "popular" : "জনপ্রিয়",
+  "sNew" : "নতুন",
+  "special" : "স্পেশাল"
 }

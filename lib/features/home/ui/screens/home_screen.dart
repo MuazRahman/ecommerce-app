@@ -1,8 +1,9 @@
 import 'package:ecommerce_app/app/assets_path.dart';
 import 'package:ecommerce_app/core/extensions/localization_extension.dart';
+import 'package:ecommerce_app/features/common/ui/widgets/category_item.dart';
 import 'package:ecommerce_app/features/home/ui/widgets/app_bar_action_button.dart';
-import 'package:ecommerce_app/features/home/ui/widgets/category_item.dart';
 import 'package:ecommerce_app/features/home/ui/widgets/home_carousel_slider.dart';
+import 'package:ecommerce_app/features/home/ui/widgets/product_card.dart';
 import 'package:ecommerce_app/features/home/ui/widgets/section_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -19,22 +20,62 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            _buildSearchTextField(),
-            SizedBox(height: 16),
-            HomeCarouselSlider(),
-            SizedBox(height: 16),
-            SectionHeader(
-              title: context.localization.categories,
-              onTapSeeAll: () {},
-            ),
-            SizedBox(height: 16),
-            buildCategoriesSection(),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              _buildSearchTextField(),
+              SizedBox(height: 16),
+              HomeCarouselSlider(),
+              SizedBox(height: 16),
+              SectionHeader(
+                title: context.localization.categories,
+                onTapSeeAll: () {},
+              ),
+              SizedBox(height: 16),
+              buildCategoriesSection(),
+              SizedBox(height: 16),
+              SectionHeader(
+                title: context.localization.popular,
+                onTapSeeAll: () {},
+              ),
+              SizedBox(height: 16),
+              buildProductSection(),
+              SizedBox(height: 16),
+              SectionHeader(
+                title: context.localization.special,
+                onTapSeeAll: () {},
+              ),
+              SizedBox(height: 16),
+              buildProductSection(),
+              SizedBox(height: 16),
+              SectionHeader(
+                title: context.localization.sNew,
+                onTapSeeAll: () {},
+              ),
+              SizedBox(height: 16),
+              buildProductSection(),
+              SizedBox(height: 32),
+            ],
+          ),
         ),
+      ),
+    );
+  }
+
+  Widget buildProductSection() {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          ProductCard(),
+          ProductCard(),
+          ProductCard(),
+          ProductCard(),
+          ProductCard(),
+          ProductCard(),
+        ],
       ),
     );
   }
