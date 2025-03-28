@@ -1,12 +1,14 @@
 import 'package:ecommerce_app/app/assets_path.dart';
 import 'package:ecommerce_app/core/extensions/localization_extension.dart';
+import 'package:ecommerce_app/features/common/controller/main_bottom_nav_bar_controller.dart';
 import 'package:ecommerce_app/features/common/ui/widgets/category_item.dart';
 import 'package:ecommerce_app/features/home/ui/widgets/app_bar_action_button.dart';
 import 'package:ecommerce_app/features/home/ui/widgets/home_carousel_slider.dart';
-import 'package:ecommerce_app/features/home/ui/widgets/product_card.dart';
+import 'package:ecommerce_app/features/common/ui/widgets/product_card.dart';
 import 'package:ecommerce_app/features/home/ui/widgets/section_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -31,7 +33,9 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(height: 16),
               SectionHeader(
                 title: context.localization.categories,
-                onTapSeeAll: () {},
+                onTapSeeAll: () {
+                  Get.find<MainBottomNavBarController>().moveToCategory();
+                },
               ),
               SizedBox(height: 16),
               buildCategoriesSection(),

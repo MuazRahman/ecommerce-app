@@ -1,7 +1,9 @@
+import 'package:ecommerce_app/app/controller_binder.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:ecommerce_app/app/app_color.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'app_routes.dart';
 
 class CraftyBay extends StatefulWidget {
@@ -14,7 +16,7 @@ class CraftyBay extends StatefulWidget {
 class _CraftyBayState extends State<CraftyBay> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       onGenerateRoute: AppRoutes.onGenerateRoute,
@@ -68,6 +70,7 @@ class _CraftyBayState extends State<CraftyBay> {
         Locale('en'),
         Locale('bn'),
       ],
+      initialBinding: ControllerBinder(),
     );
   }
 }
