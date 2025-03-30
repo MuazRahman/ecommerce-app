@@ -17,16 +17,19 @@ class _ProductListScreenState extends State<ProductListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(widget.category)),
-      body: GridView.builder(
-        itemCount: 30,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-          mainAxisSpacing: 8,
-          crossAxisSpacing: 0,
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: GridView.builder(
+          itemCount: 30,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            mainAxisSpacing: 8,
+            crossAxisSpacing: 0,
+          ),
+          itemBuilder: (context, index) {
+            return FittedBox(child: ProductCard());
+          },
         ),
-        itemBuilder: (context, index) {
-          return FittedBox(child: ProductCard());
-        },
       ),
     );
   }
