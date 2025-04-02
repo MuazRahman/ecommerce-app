@@ -3,8 +3,10 @@ import 'package:ecommerce_app/features/auth/ui/screens/sign_up_screen.dart';
 import 'package:ecommerce_app/features/auth/ui/screens/splash_screen.dart';
 import 'package:ecommerce_app/features/auth/ui/screens/verify_otp_screen.dart';
 import 'package:ecommerce_app/features/common/ui/screens/main_bottom_nav_bar_screen.dart';
+import 'package:ecommerce_app/features/products/ui/screens/create_review_screen.dart';
 import 'package:ecommerce_app/features/products/ui/screens/product_details_screen.dart';
 import 'package:ecommerce_app/features/products/ui/screens/product_list_screen.dart';
+import 'package:ecommerce_app/features/products/ui/screens/review_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {
@@ -31,6 +33,12 @@ class AppRoutes {
     }
     else if (settings.name == ProductDetailsScreen.name) {
       route = const ProductDetailsScreen();
+    }
+    else if (settings.name == ReviewScreen.name) {
+      route = const ReviewScreen();
+    }
+    else if (settings.name == CreateReviewScreen.name) {
+      route = const CreateReviewScreen();
     }
     return MaterialPageRoute(
       builder: (context) {

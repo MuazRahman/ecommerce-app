@@ -21,5 +21,16 @@
   "sNew" : "নতুন",
   "special" : "স্পেশাল",
   "wishList" : "পছন্দের তালিকা",
-  "productDetails" : "পণ্যের বিবরণ"
+  "productDetails" : "পণ্যের বিবরণ",
+  "review" : "রিভিউ",
+  "color" : "কালার",
+  "sizes" : "সাইজ সমূহ",
+  "description" : "বিবরণী",
+  "price" : "মূল্য",
+  "reviews" : "রিভিউ সমূহ",
+  "totalReviews" : "মোট রিভিউ",
+  "addToCart" : "কার্টে যুক্ত করুন",
+  "createReview" :"রিভিউ যুক্ত করুন",
+  "writeReview" :"রিভিউ লিখুন",
+  "submit" : "সাবমিট"
 }

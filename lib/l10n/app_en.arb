@@ -21,5 +21,16 @@
   "sNew" : "New",
   "special" : "Special",
   "wishList" : "Wishlist",
-  "productDetails" : "Product Details"
+  "productDetails" : "Product Details",
+  "review" : "Review",
+  "color" : "Color",
+  "sizes" : "Sizes",
+  "description" : "Description",
+  "price" : "Price",
+  "reviews" : "Reviews",
+  "totalReviews" : "Toral Reviews",
+  "addToCart" : "Add to cart",
+  "createReview" :"Create Review",
+  "writeReview" :"Write Review",
+  "submit" : "Submit"
 }

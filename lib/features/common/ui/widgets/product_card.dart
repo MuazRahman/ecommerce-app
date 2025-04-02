@@ -62,7 +62,7 @@ class ProductCard extends StatelessWidget {
                             padding: const EdgeInsets.all(2),
                             child: Icon(Icons.favorite_border, size: 14, color: Colors.white,),
                           ),
-                        )
+                        ),
                       ],
                     )
                   ],
