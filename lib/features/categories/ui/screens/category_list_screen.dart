@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/extensions/localization_extension.dart';
 import 'package:ecommerce_app/features/common/controller/main_bottom_nav_bar_controller.dart';
 import 'package:ecommerce_app/features/common/ui/widgets/category_item.dart';
 import 'package:flutter/material.dart';
@@ -26,10 +27,10 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
             onPressed: () {
               Get.find<MainBottomNavBarController>().backToHome();
             },
-            icon: Icon(Icons.keyboard_arrow_left),
+            icon: Icon(Icons.keyboard_arrow_left_rounded, size: 36,),
           ),
 
-          title: Text('Categories'),
+          title: Text(context.localization.category),
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),

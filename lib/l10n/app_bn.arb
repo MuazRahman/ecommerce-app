@@ -15,7 +15,7 @@
   "enterYourOtpCode" : "ওটিপি কোড দিন",
   "aFourDigitCodeHasBeenSent" : "আপনার ইমেইলে ৪ সংখ্যার একটি ওটিপি পাঠানো হয়েছে।",
   "verify" : "নিশ্চিত করুন",
-  "categories" : "ক্যাটাগরি",
+  "category" : "ক্যাটাগরি",
   "seeAll" : "সবগুলো দেখুন",
   "popular" : "জনপ্রিয়",
   "sNew" : "নতুন",
@@ -32,5 +32,9 @@
   "addToCart" : "কার্টে যুক্ত করুন",
   "createReview" :"রিভিউ যুক্ত করুন",
   "writeReview" :"রিভিউ লিখুন",
-  "submit" : "সাবমিট"
+  "submit" : "সাবমিট",
+  "home" : "হোম",
+  "cart" : "কার্ট",
+  "checkOut" : "নিশ্চিত করুন",
+  "totalPrice" : "সর্বমোট মূল্য"
 }

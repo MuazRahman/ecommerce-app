@@ -15,11 +15,13 @@
   "enterYourOtpCode" : "Enter your OTP Code",
   "aFourDigitCodeHasBeenSent" : "A 4 digit code has been sent to your email",
   "verify" : "Verify",
-  "categories" : "Categories",
+  "home" : "home",
+  "category" : "Category",
   "seeAll" : "See All",
   "popular" : "Popular",
   "sNew" : "New",
   "special" : "Special",
+  "cart" : "Cart",
   "wishList" : "Wishlist",
   "productDetails" : "Product Details",
   "review" : "Review",
@@ -28,9 +30,11 @@
   "description" : "Description",
   "price" : "Price",
   "reviews" : "Reviews",
-  "totalReviews" : "Toral Reviews",
+  "totalReviews" : "Total Reviews",
   "addToCart" : "Add to cart",
   "createReview" :"Create Review",
   "writeReview" :"Write Review",
-  "submit" : "Submit"
+  "submit" : "Submit",
+  "checkOut" : "Checkout",
+  "totalPrice" : "Total Price"
 }

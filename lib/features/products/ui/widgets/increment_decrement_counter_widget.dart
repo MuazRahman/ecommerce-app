@@ -54,7 +54,7 @@ class _IncrementDecrementCounterWidgetState extends State<IncrementDecrementCoun
               color: AppColors.themeColor,
               borderRadius: BorderRadius.circular(4),
             ),
-            child: Icon(Icons.remove),
+            child: Icon(Icons.add),
           ),
         ),
       ],

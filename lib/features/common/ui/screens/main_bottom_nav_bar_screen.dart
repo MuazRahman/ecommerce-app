@@ -1,4 +1,6 @@
-import 'package:ecommerce_app/features/catagories/ui/screens/category_list_screen.dart';
+import 'package:ecommerce_app/core/extensions/localization_extension.dart';
+import 'package:ecommerce_app/features/cart/ui/screens/cart_list_screen.dart';
+import 'package:ecommerce_app/features/categories/ui/screens/category_list_screen.dart';
 import 'package:ecommerce_app/features/common/controller/main_bottom_nav_bar_controller.dart';
 import 'package:ecommerce_app/features/home/ui/screens/home_screen.dart';
 import 'package:ecommerce_app/features/wishlist/ui/screens/wish_list_screen.dart';
@@ -18,7 +20,7 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
   final List<Widget> _screens = [
     HomeScreen(),
     CategoryListScreen(),
-    HomeScreen(),
+    CartListScreen(),
     WishListScreen(),
   ];
 
@@ -36,18 +38,18 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
             selectedIndex: controller.selectedIndex,
             onDestinationSelected: controller.changeIndex,
             destinations: [
-              NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+              NavigationDestination(icon: Icon(Icons.home), label: context.localization.home),
               NavigationDestination(
                 icon: Icon(Icons.category),
-                label: 'Category',
+                label: context.localization.category,
               ),
               NavigationDestination(
                 icon: Icon(Icons.shopping_cart),
-                label: 'Cart',
+                label: context.localization.cart,
               ),
               NavigationDestination(
                 icon: Icon(Icons.favorite_border),
-                label: 'Wishlist',
+                label: context.localization.wishList,
               ),
             ],
           );

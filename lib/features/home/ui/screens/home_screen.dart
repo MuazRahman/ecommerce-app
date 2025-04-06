@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
               HomeCarouselSlider(),
               SizedBox(height: 16),
               SectionHeader(
-                title: context.localization.categories,
+                title: context.localization.category,
                 onTapSeeAll: () {
                   Get.find<MainBottomNavBarController>().moveToCategory();
                 },
