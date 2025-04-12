@@ -1,8 +1,8 @@
 import 'package:ecommerce_app/app/app_color.dart';
 import 'package:ecommerce_app/core/extensions/localization_extension.dart';
-import 'package:ecommerce_app/features/auth/ui/screens/sign_in_screen.dart';
 import 'package:ecommerce_app/features/auth/ui/screens/verify_otp_screen.dart';
 import 'package:ecommerce_app/features/auth/ui/widgets/app_logo.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -40,6 +40,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   Widget _buildForm(TextTheme textTheme) {
     return Form(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       key: _formKey,
       child: Column(
         children: [
@@ -61,6 +62,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(hintText: context.localization.email),
+            validator: (String? value) {
+              String email = value ?? '';
+              if (!EmailValidator.validate(email)) {
+                return 'Enter a valid email address';
+              }
+              return null;
+            },
           ),
           SizedBox(height: 8),
           TextFormField(
@@ -69,6 +77,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
             decoration: InputDecoration(
               hintText: context.localization.firstName,
             ),
+            validator: (String? value) {
+              if (value?.trim().isEmpty ?? true) {
+                return 'Enter your first name';
+              }
+              return null;
+            },
           ),
           SizedBox(height: 8),
           TextFormField(
@@ -77,6 +91,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
             decoration: InputDecoration(
               hintText: context.localization.lastName,
             ),
+            validator: (String? value) {
+              if (value?.trim().isEmpty ?? true) {
+                return 'Enter your last name';
+              }
+              return null;
+            },
           ),
           SizedBox(height: 8),
           TextFormField(
@@ -84,6 +104,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.phone,
             decoration: InputDecoration(hintText: context.localization.phone),
+            validator: (String? value) {
+              String phoneNumber = value ?? '';
+              RegExp regExp = RegExp(r'^(?:\+88|88)?01[3-9]\d{8}$');
+              if (regExp.hasMatch(phoneNumber) == false) {
+                return 'Enter a valid phone number';
+              }
+              return null;
+            },
           ),
           SizedBox(height: 8),
           TextFormField(
@@ -92,6 +120,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
             decoration: InputDecoration(
               hintText: context.localization.password,
             ),
+            validator: (String? value) {
+              if ((value?.isEmpty ?? true) || value!.length <6) {
+                return 'Enter a password more than 6 letters';
+              }
+              return null;
+            },
           ),
           SizedBox(height: 8),
           TextFormField(
@@ -105,6 +139,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 vertical: 16,
               ),
             ),
+            validator: (String? value) {
+              if (value?.trim().isEmpty ?? true) {
+                return 'Enter your delivery address';
+              }
+              return null;
+            },
           ),
           SizedBox(height: 16),
           ElevatedButton(
@@ -135,7 +175,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   void _onTapSignUpButton() {
-    Navigator.pushNamed(context, VerifyOtpScreen.name);
+    if (_formKey.currentState!.validate()) {
+      // TODO: Sign Up
+    }
+    // Navigator.pushNamed(context, VerifyOtpScreen.name);
   }
 
   void _onTapSignInButton() {
