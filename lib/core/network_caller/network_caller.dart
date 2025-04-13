@@ -27,12 +27,16 @@ class NetworkCaller {
       _logRequest(url, headers);
       Response response = await get(uri, headers: headers);
       _logResponse(url, response);
+      final decodedResponse = jsonDecode(response.body);
 
       if (response.statusCode == 200) {
-        final decodeResponse = jsonDecode(response.body);
-        return NetworkResponse(isSuccess: true, statusCode: response.statusCode, responseData: decodeResponse,);
-      } else {
-        return NetworkResponse(isSuccess: false, statusCode: response.statusCode);
+        return NetworkResponse(isSuccess: true, statusCode: response.statusCode, responseData: decodedResponse,);
+      }
+      else if (response.statusCode == 401) {
+        return NetworkResponse(isSuccess: false, statusCode: response.statusCode, errorMessage: decodedResponse['msg']);
+      }
+      else {
+        return NetworkResponse(isSuccess: false, statusCode: response.statusCode, errorMessage: decodedResponse['msg']);
       }
     }
     catch (e) {
@@ -48,16 +52,16 @@ class NetworkCaller {
       _logRequest(url, headers);
       Response response = await post(uri, headers: headers, body: jsonEncode(body),);
       _logResponse(url, response);
+      final decodedResponse = jsonDecode(response.body);
 
-      if (response.statusCode == 200) {
-        final decodedResponse = jsonDecode(response.body);
+      if (response.statusCode == 200 || response.statusCode == 201) {
         return NetworkResponse(isSuccess: true, statusCode: response.statusCode, responseData: decodedResponse);
       }
       else if (response.statusCode == 401) {
-        return NetworkResponse(isSuccess: false, statusCode: response.statusCode);
+        return NetworkResponse(isSuccess: false, statusCode: response.statusCode, errorMessage: decodedResponse['msg']);
       }
       else {
-        return NetworkResponse(isSuccess: false, statusCode: response.statusCode);
+        return NetworkResponse(isSuccess: false, statusCode: response.statusCode, errorMessage: decodedResponse['msg']);
       }
     }
     catch (e) {

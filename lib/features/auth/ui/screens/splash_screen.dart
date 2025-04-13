@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/widgets/centered_circular_progress_indicatior.dart';
 import 'package:ecommerce_app/features/auth/ui/screens/sign_in_screen.dart';
 import 'package:ecommerce_app/features/auth/ui/screens/sign_up_screen.dart';
 import 'package:ecommerce_app/features/auth/ui/widgets/app_logo.dart';
@@ -40,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
               Spacer(),
               AppLogo(),
               Spacer(),
-              CircularProgressIndicator(),
+              CenteredCircularProgressIndicatior(),
               SizedBox(height: 16,),
               Text('${AppLocalizations.of(context)!.version} ${AppConfig.currentAppVersion}')
             ],

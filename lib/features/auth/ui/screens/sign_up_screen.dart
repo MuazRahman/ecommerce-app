@@ -1,10 +1,15 @@
 import 'package:ecommerce_app/app/app_color.dart';
 import 'package:ecommerce_app/core/extensions/localization_extension.dart';
+import 'package:ecommerce_app/core/widgets/centered_circular_progress_indicatior.dart';
+import 'package:ecommerce_app/core/widgets/show_snack_bar_message.dart';
+import 'package:ecommerce_app/features/auth/data/models/sign_up_model.dart';
+import 'package:ecommerce_app/features/auth/ui/controllers/sign_up_controller.dart';
 import 'package:ecommerce_app/features/auth/ui/screens/verify_otp_screen.dart';
 import 'package:ecommerce_app/features/auth/ui/widgets/app_logo.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -23,6 +28,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _passwordTEController = TextEditingController();
   final TextEditingController _deliveryAddressTEController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final SignUpController signUpController = Get.find<SignUpController>();
 
   @override
   Widget build(BuildContext context) {
@@ -147,9 +153,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
             },
           ),
           SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: _onTapSignUpButton,
-            child: Text(context.localization.signUp),
+          GetBuilder<SignUpController>(
+            builder: (controller) {
+              return Visibility(
+                visible: controller.signUpInProgress == false,
+                replacement: CenteredCircularProgressIndicatior(),
+                child: ElevatedButton(
+                  onPressed: _onTapSignUpButton,
+                  child: Text(context.localization.signUp),
+                ),
+              );
+            }
           ),
           SizedBox(height: 24),
           RichText(
@@ -174,11 +188,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  void _onTapSignUpButton() {
+  Future<void> _onTapSignUpButton() async {
     if (_formKey.currentState!.validate()) {
-      // TODO: Sign Up
+      SignUpModel signUpModel = SignUpModel(
+          email: _emailTEController.text.trim(),
+          firstName: _firstNameTEController.text.trim(),
+          lastName: _lastNameTEController.text.trim(),
+          phone: _phoneTEController.text.trim(),
+          password: _passwordTEController.text,
+          deliveryAddress: _deliveryAddressTEController.text.trim(),
+      );
+      final isSuccess = await signUpController.signUp(signUpModel);
+      if (isSuccess) {
+        Navigator.pushNamed(context, VerifyOtpScreen.name);
+      } else {
+        showSnackBarMessage(context, signUpController.errorMessage!, true);
+      }
     }
-    // Navigator.pushNamed(context, VerifyOtpScreen.name);
   }
 
   void _onTapSignInButton() {
