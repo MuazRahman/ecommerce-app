@@ -28,7 +28,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _passwordTEController = TextEditingController();
   final TextEditingController _deliveryAddressTEController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final SignUpController signUpController = Get.find<SignUpController>();
+  final SignUpController _signUpController = Get.find<SignUpController>();
 
   @override
   Widget build(BuildContext context) {
@@ -198,11 +198,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
           password: _passwordTEController.text,
           deliveryAddress: _deliveryAddressTEController.text.trim(),
       );
-      final isSuccess = await signUpController.signUp(signUpModel);
+      final isSuccess = await _signUpController.signUp(signUpModel);
       if (isSuccess) {
         Navigator.pushNamed(context, VerifyOtpScreen.name, arguments: _emailTEController.text.trim());
       } else {
-        showSnackBarMessage(context, signUpController.errorMessage!, true);
+        showSnackBarMessage(context, _signUpController.errorMessage!, true);
       }
     }
   }
@@ -220,5 +220,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
     _phoneTEController.dispose();
     _passwordTEController.dispose();
     _deliveryAddressTEController.dispose();
+    _signUpController.dispose();
   }
 }
