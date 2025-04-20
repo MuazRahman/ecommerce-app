@@ -10,6 +10,7 @@ import 'package:ecommerce_app/features/common/ui/screens/main_bottom_nav_bar_scr
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -133,6 +134,6 @@ class _SignInScreenState extends State<SignInScreen> {
     super.dispose();
     _emailTEController.dispose();
     _passwordTEController.dispose();
-    _signInController.dispose();
+    // _signInController.dispose();
   }
 }

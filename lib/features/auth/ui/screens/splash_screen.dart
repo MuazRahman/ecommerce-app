@@ -1,12 +1,15 @@
+
 import 'package:ecommerce_app/core/widgets/centered_circular_progress_indicatior.dart';
+import 'package:ecommerce_app/features/auth/ui/controllers/auth_controller.dart';
 import 'package:ecommerce_app/features/auth/ui/screens/sign_in_screen.dart';
-import 'package:ecommerce_app/features/auth/ui/screens/sign_up_screen.dart';
 import 'package:ecommerce_app/features/auth/ui/widgets/app_logo.dart';
 import 'package:ecommerce_app/features/common/ui/screens/main_bottom_nav_bar_screen.dart';
-import 'package:ecommerce_app/features/home/ui/screens/home_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ecommerce_app/app/app_config.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:logger/logger.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -25,9 +28,17 @@ class _SplashScreenState extends State<SplashScreen> {
     _moveToNextScreen();
   }
 
+  final AuthController authController = Get.find<AuthController>();
+
   Future<void> _moveToNextScreen() async {
     await Future.delayed(const Duration(seconds: 2),);
-    Navigator.pushReplacementNamed(context, SignUpScreen.name);
+    bool isLoggedIn = await authController.isUserLoggedIn();
+    if (isLoggedIn){
+      Navigator.pushNamedAndRemoveUntil(context, MainBottomNavBarScreen.name, (predicate)=> false);
+    }
+    else {
+      Navigator.pushReplacementNamed(context, SignInScreen.name);
+    }
   }
 
   @override

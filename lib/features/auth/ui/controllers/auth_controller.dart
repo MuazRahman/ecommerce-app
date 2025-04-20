@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:ecommerce_app/features/auth/data/models/user_model.dart';
+import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthController {
@@ -26,23 +27,22 @@ class AuthController {
     if (userData != null) {
       user = UserModel.fromJson(jsonDecode(userData));
     }
+  }
 
-    Future<bool> isUserLoggedIn() async{
-      SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-      String? accessToken = await sharedPreferences.getString(_tokenKey);
-      if (accessToken != null) {
-        await getUserData();
-        return true;
-      }
-      return false;
+  Future<bool> isUserLoggedIn() async{
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    String? accessToken = sharedPreferences.getString(_tokenKey);
+    if (accessToken != null) {
+      await getUserData();
+      return true;
     }
+    return false;
+  }
 
-    Future<void> clearUserData() async {
-      SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-      await sharedPreferences.clear();
-      token = null;
-      user = null;
-    }
-
+  Future<void> clearUserData() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    await sharedPreferences.clear();
+    token = null;
+    user = null;
   }
 }

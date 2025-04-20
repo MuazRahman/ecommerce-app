@@ -220,6 +220,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
     _phoneTEController.dispose();
     _passwordTEController.dispose();
     _deliveryAddressTEController.dispose();
-    _signUpController.dispose();
+    // _signUpController.dispose();
   }
 }

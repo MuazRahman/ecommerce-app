@@ -4,6 +4,7 @@ import 'package:ecommerce_app/features/auth/data/models/sign_in_request_model.da
 import 'package:ecommerce_app/features/auth/data/models/user_model.dart';
 import 'package:ecommerce_app/features/auth/ui/controllers/auth_controller.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 
 class SignInController extends GetxController {
   bool _inProgress = false;
@@ -25,6 +26,8 @@ class SignInController extends GetxController {
       UserModel userModel = UserModel.fromJson(response.responseData!['data']['user']);
       // Save User Token
       String accessToken = response.responseData!['data']['token'];
+      Logger logger = Logger();
+      logger.i("Access Token: $accessToken");
       await Get.find<AuthController>().saveUserData(accessToken, userModel);
       _errorMessage = null;
       isSuccess = true;
