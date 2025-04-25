@@ -1,6 +1,9 @@
 import 'package:ecommerce_app/app/assets_path.dart';
 import 'package:ecommerce_app/core/extensions/localization_extension.dart';
+import 'package:ecommerce_app/core/widgets/centered_circular_progress_indicatior.dart';
+import 'package:ecommerce_app/features/common/controller/category_controller.dart';
 import 'package:ecommerce_app/features/common/controller/main_bottom_nav_bar_controller.dart';
+import 'package:ecommerce_app/features/common/data/models/category_model.dart';
 import 'package:ecommerce_app/features/common/ui/widgets/category_item.dart';
 import 'package:ecommerce_app/features/home/ui/widgets/app_bar_action_button.dart';
 import 'package:ecommerce_app/features/home/ui/widgets/home_carousel_slider.dart';
@@ -38,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
               SizedBox(height: 16),
-              buildCategoriesSection(),
+              _buildCategoriesSection(),
               SizedBox(height: 16),
               SectionHeader(
                 title: context.localization.popular,
@@ -84,19 +87,27 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget buildCategoriesSection() {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
-          CategoryItem(),
-          CategoryItem(),
-          CategoryItem(),
-          CategoryItem(),
-          CategoryItem(),
-          CategoryItem(),
-        ],
-      ),
+  Widget _buildCategoriesSection() {
+    return GetBuilder<CategoryController>(
+        builder: (controller) {
+          if (controller.isInitialLoading) {
+            return SizedBox(
+                height: 100,
+                child: CenteredCircularProgressIndicatior());
+          }
+
+          List<CategoryModel> list = controller.categoryList.length > 10
+              ? controller.categoryList.sublist(0, 10)
+              : controller.categoryList;
+          return SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: list.map((e) {
+                return CategoryItem(categoryModel: e,);
+              }).toList(),
+            ),
+          );
+        }
     );
   }
 

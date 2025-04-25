@@ -1,7 +1,9 @@
 import 'package:ecommerce_app/core/extensions/localization_extension.dart';
 import 'package:ecommerce_app/features/cart/ui/screens/cart_list_screen.dart';
 import 'package:ecommerce_app/features/categories/ui/screens/category_list_screen.dart';
+import 'package:ecommerce_app/features/common/controller/category_controller.dart';
 import 'package:ecommerce_app/features/common/controller/main_bottom_nav_bar_controller.dart';
+import 'package:ecommerce_app/features/common/controller/home_slider_controller.dart';
 import 'package:ecommerce_app/features/home/ui/screens/home_screen.dart';
 import 'package:ecommerce_app/features/wishlist/ui/screens/wish_list_screen.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +25,13 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
     CartListScreen(),
     WishListScreen(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    Get.find<HomeSliderController>().getSliders();
+    Get.find<CategoryController>().getCategoryList();
+  }
 
   @override
   Widget build(BuildContext context) {
