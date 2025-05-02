@@ -5,9 +5,7 @@ import 'package:ecommerce_app/features/products/ui/screens/product_details_scree
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({
-    super.key, required this.productModel,
-  });
+  const ProductCard({super.key, required this.productModel});
 
   final ProductModel productModel;
 
@@ -15,7 +13,11 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, ProductDetailsScreen.name);
+        Navigator.pushNamed(
+          context,
+          ProductDetailsScreen.name,
+          arguments: productModel.id,
+        );
       },
       child: Card(
         child: SizedBox(
@@ -31,12 +33,18 @@ class ProductCard extends StatelessWidget {
                     topRight: Radius.circular(8),
                   ),
                   color: AppColors.themeColor.withOpacity(0.15),
-                  image: productModel.photos.isNotEmpty ? DecorationImage(
-                    image: NetworkImage(productModel.photos.first ),
-                    fit: BoxFit.cover,
-                  ) : null,
+                  image:
+                      productModel.photos.isNotEmpty
+                          ? DecorationImage(
+                            image: NetworkImage(productModel.photos.first),
+                            fit: BoxFit.cover,
+                          )
+                          : null,
                 ),
-                child: productModel.photos.isEmpty ? Icon(Icons.error_outline_sharp) : null,
+                child:
+                    productModel.photos.isEmpty
+                        ? Icon(Icons.error_outline_sharp)
+                        : null,
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -47,16 +55,28 @@ class ProductCard extends StatelessWidget {
                       productModel.title,
                       textAlign: TextAlign.start,
                       maxLines: 1,
-                      style: const TextStyle(overflow: TextOverflow.ellipsis, fontWeight: FontWeight.w600),
+                      style: const TextStyle(
+                        overflow: TextOverflow.ellipsis,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('${productModel.currentPrice} ৳', style: TextStyle(color: AppColors.themeColor, fontWeight: FontWeight.w600),),
+                        Text(
+                          '${productModel.currentPrice} ৳',
+                          style: TextStyle(
+                            color: AppColors.themeColor,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                         Wrap(
                           children: [
-                            Icon(Icons.star, size: 18, color: Colors.amber,),
-                            Text('${productModel.rating}', style: TextStyle(fontWeight: FontWeight.w500),),
+                            Icon(Icons.star, size: 18, color: Colors.amber),
+                            Text(
+                              '${productModel.rating}',
+                              style: TextStyle(fontWeight: FontWeight.w500),
+                            ),
                           ],
                         ),
                         Card(
@@ -66,11 +86,15 @@ class ProductCard extends StatelessWidget {
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(2),
-                            child: Icon(Icons.favorite_border, size: 14, color: Colors.white,),
+                            child: Icon(
+                              Icons.favorite_border,
+                              size: 14,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),

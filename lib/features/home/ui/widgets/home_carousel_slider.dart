@@ -33,7 +33,7 @@ class _HomeCarouselSliderState extends State<HomeCarouselSlider> {
                   options: CarouselOptions(
                     height: 200.0,
                     viewportFraction: 0.9,
-                    autoPlay: true,
+                    autoPlay: sliderController.sliders.length > 1 ? true : false,
                     autoPlayInterval: Duration(seconds: 3),
                     onPageChanged: (index, reason) {
                       _selectedSlider = index;
