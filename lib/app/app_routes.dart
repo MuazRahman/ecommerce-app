@@ -4,6 +4,7 @@ import 'package:ecommerce_app/features/auth/ui/screens/sign_in_screen.dart';
 import 'package:ecommerce_app/features/auth/ui/screens/sign_up_screen.dart';
 import 'package:ecommerce_app/features/auth/ui/screens/splash_screen.dart';
 import 'package:ecommerce_app/features/auth/ui/screens/verify_otp_screen.dart';
+import 'package:ecommerce_app/features/common/data/models/category_model.dart';
 import 'package:ecommerce_app/features/common/ui/screens/main_bottom_nav_bar_screen.dart';
 import 'package:ecommerce_app/features/products/ui/screens/create_review_screen.dart';
 import 'package:ecommerce_app/features/products/ui/screens/product_details_screen.dart';
@@ -31,7 +32,7 @@ class AppRoutes {
       route = const MainBottomNavBarScreen();
     }
     else if (settings.name == ProductListScreen.name) {
-      final String category = settings.arguments as String;
+      final category = settings.arguments as CategoryModel;
       route = ProductListScreen(category: category);
     }
     else if (settings.name == ProductDetailsScreen.name) {

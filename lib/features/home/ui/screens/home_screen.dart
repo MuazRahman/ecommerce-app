@@ -76,12 +76,12 @@ class _HomeScreenState extends State<HomeScreen> {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          ProductCard(),
-          ProductCard(),
-          ProductCard(),
-          ProductCard(),
-          ProductCard(),
-          ProductCard(),
+          // ProductCard(),
+          // ProductCard(),
+          // ProductCard(),
+          // ProductCard(),
+          // ProductCard(),
+          // ProductCard(),
         ],
       ),
     );
@@ -91,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return GetBuilder<CategoryController>(
         builder: (controller) {
           if (controller.isInitialLoading) {
-            return SizedBox(
+            return const SizedBox(
                 height: 100,
                 child: CenteredCircularProgressIndicatior());
           }
@@ -107,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
               }).toList(),
             ),
           );
-        }
+        },
     );
   }
 

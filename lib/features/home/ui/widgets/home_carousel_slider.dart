@@ -59,7 +59,7 @@ class _HomeCarouselSliderState extends State<HomeCarouselSlider> {
                                 padding: const EdgeInsets.all(16),
                                 child: Text(
                                   slider.description,
-                                  style: TextStyle(fontSize: 16.0, color: Colors.grey),
+                                    style: TextStyle(fontSize: 16.0, color: Colors.grey),
                                 ),
                               ),
                             );
